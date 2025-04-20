@@ -1,13 +1,16 @@
-# itnetgroup-frontend
+# ITNetGROUP front-end
 
-Este proyecto es la interfaz de usuario del sistema **itnetgroup**, desarrollado como parte del curso de Desarrollo Full Stack Web. La aplicación está diseñada para ofrecer una experiencia de usuario intuitiva y eficiente, utilizando tecnologías modernas de desarrollo web.
+Este proyecto es la interfaz de usuario del sistema de gestion de activos de TI para la empresa **ITNetGROUP**, desarrollado como parte del curso de Desarrollo Full Stack Web dentro de la estrategia Retos CUC. La aplicación está diseñada para ofrecer una experiencia de usuario intuitiva y eficiente, utilizando tecnologías modernas de desarrollo web.
 
 ## Características
 
+- **Dashboard**: La pagina principal mostrará un resumen de los activos TI actuales en la empresa, asi como tambien estadisticas de los mismos.
+- **Gestión de activos**: Diferentes secciones de cada tipo de dispositivo que mostrará la informacion de todos los dispositivos conectados a la red de la empresa que coincidan con la seccion.
+- **Gestion de usuarios y roles**: Administrando las funcionalidades a las que podrá acceder cada usuario segun su rol.
 - **Interfaz moderna y responsiva**: Adaptada para dispositivos móviles, tabletas y escritorios.
-- **Integración con API**: Comunicación fluida con el backend para la gestión de datos.
+- **Integración con API**: Comunicación fluida con el backend para la gestión de datos de los activos TI.
 - **Componentes reutilizables**: Implementación de componentes modulares para facilitar el mantenimiento y escalabilidad.
-- **Autenticación de usuarios**: Sistema de inicio de sesión seguro.
+- **Autenticación de usuarios**: Ya que los usuarios son creados por un administrador, solo se necesita de un inicio de sesion seguro.
 
 ## Tecnologías utilizadas
 
@@ -20,7 +23,7 @@ Este proyecto es la interfaz de usuario del sistema **itnetgroup**, desarrollado
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/itnetgroup-frontend.git
+    git clone https://github.com/HaJoy/itnetgroup-frontend.git
     ```
 2. Navega al directorio del proyecto:
     ```bash
@@ -54,10 +57,3 @@ Si deseas contribuir al proyecto, sigue estos pasos:
     ```
 5. Abre un Pull Request en GitHub.
 
-## Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
-## Contacto
-
-Para cualquier consulta o sugerencia, puedes contactar al equipo de desarrollo a través de [correo electrónico] o crear un issue en este repositorio.
