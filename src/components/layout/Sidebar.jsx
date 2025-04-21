@@ -21,8 +21,8 @@ const SidebarItem = ({ icon: Icon, iconSize = 20, text, isOpen, to }) => {
       to={to}
       className={
         "btn btn-ghost" +
-        (isActive ? " bg-primary " : " ") +
-        "justify-start w-full min-w-min"
+        (isActive ? " bg-gray-300 " : " ") +
+        "justify-start w-full min-w-min not-last:mb-1 hover:bg-primary"
       }
     >
       <Icon size={iconSize} />
@@ -32,18 +32,13 @@ const SidebarItem = ({ icon: Icon, iconSize = 20, text, isOpen, to }) => {
 };
 
 export const Sidebar = ({ isOpen, toggleSidebar }) => {
-  // const [isOpen, setIsOpen] = useState(true);
-
-  // const toggleSidebar = () => {
-  //   setIsOpen(!isOpen);
-  // };
 
   return (
     <>
-      <aside>
+      <aside className="text-primary-content">
         <div
           className={
-            "md:flex md:flex-col h-screen bg-base-100 shadow-sm transition-width " +
+            "md:flex md:flex-col h-screen bg-base-200 shadow-sm transition-width " +
             (isOpen ? "flex flex-col w-screen md:w-64" : "hidden w-16")
           }
         >
@@ -85,7 +80,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
             />
             <span
               className={
-                "self-start ml-3.5 my-3.5 dark:text-gray-400 " +
+                "self-start ml-3.5 my-3.5 text-gray-400 " +
                 (isOpen ? "visible" : "hidden")
               }
             >
