@@ -11,7 +11,7 @@ export const Searchbar = ({ placeholder }) => {
     <>
       <button
         className={
-          "btn btn-ghost md:hidden mx-2.5 " + (searchOpen ? "hidden" : "")
+          "btn btn-ghost md:hidden mr-2.5 " + (searchOpen ? "hidden" : "")
         }
         onClick={toggleSearch}
       >

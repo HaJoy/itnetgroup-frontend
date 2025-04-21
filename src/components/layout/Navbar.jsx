@@ -1,13 +1,16 @@
 import React from "react";
-import { Bell, Settings, LogOutIcon} from "lucide-react";
+import { Bell, Settings, LogOutIcon, BoxIcon} from "lucide-react";
 import { Searchbar } from "../ui/Searchbar";
 
-export const Navbar = ({ username }) => {
+export const Navbar = ({ username, toggleSidebar }) => {
   
 
   return (
     <header className="navbar bg-base-100 shadow-sm flex justify-between">
-      
+      {/* Boton para abrir el sidebar en celulares */}
+      <button className="btn btn-ghost md:hidden" onClick={toggleSidebar}>
+        <BoxIcon size={20} />
+      </button>
       <Searchbar placeholder={"Buscar activos..."} />
 
       <div className="flex flex-1 gap-2 justify-end">
