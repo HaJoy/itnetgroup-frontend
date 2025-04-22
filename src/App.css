@@ -6,3 +6,9 @@
 .transition-width {
   transition: width 0.2s ease-in-out;
 }
+
+/* Oculta el botón de limpieza en inputs de tipo search */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}

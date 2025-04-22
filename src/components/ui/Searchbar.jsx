@@ -2,16 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { Search, X } from "lucide-react";
 
-export const Searchbar = ({ placeholder }) => {
-  const [searchOpen, setSearchOpen] = useState(false);
-  const toggleSearch = () => {
-    setSearchOpen(!searchOpen);
-  };
+export const Searchbar = ({ placeholder, searchOpen, toggleSearch }) => {
+  
   return (
     <>
       <button
         className={
-          "btn btn-ghost md:hidden mr-2.5 " + (searchOpen ? "hidden" : "")
+          "btn md:hidden mr-2.5 " + (searchOpen ? "hidden" : "")
         }
         onClick={toggleSearch}
       >
@@ -22,9 +19,9 @@ export const Searchbar = ({ placeholder }) => {
           "input mx-2.5 md:flex focus:outline-none focus-within:outline-none " + (searchOpen ? "flex w-60" : "hidden")
         }
       >
-        <Search size={20} className="hidden md:inline" />
+        <Search size={20} className="hidden md:inline text-base-content" />
         <X size={20} className="md:hidden" onClick={toggleSearch} />
-        <input type="search" required placeholder={placeholder} />
+        <input type="search" className="text-base-content" required placeholder={placeholder} />
       </label>
     </>
   );
