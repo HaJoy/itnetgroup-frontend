@@ -8,7 +8,7 @@ export const Dashboard = () => {
   }, []);
 
   const [currentView, setCurrentView] = useState("dashboard");
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -16,9 +16,9 @@ export const Dashboard = () => {
   return (
     <div className="flex h-screen">
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <div className="flex-1 w-full">
+      <div className="flex-1 w-full bg-white">
         <Navbar username="Admin" toggleSidebar={toggleSidebar} />
-        Dashboard
+        <span className="text-primary-content">Dashboard</span>
       </div>
     </div>
   );
