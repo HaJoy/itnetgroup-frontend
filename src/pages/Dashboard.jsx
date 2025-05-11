@@ -2,7 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Navbar } from "../components/layout/Navbar";
 import { Sidebar } from "../components/layout/Sidebar";
 import { AssetStat } from "../components/ui/AssetStat";
-import { Computer, Monitor, Network, Package, Usb } from "lucide-react";
+import {
+  Computer,
+  Monitor,
+  Network,
+  Package,
+  Usb,
+  ChartPie,
+  Activity,
+} from "lucide-react";
 
 export const Dashboard = () => {
   useEffect(() => {
@@ -30,43 +38,59 @@ export const Dashboard = () => {
           </div>
 
           {/* Assets stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
             <AssetStat
               icon={Computer}
               iconSize={28}
               title={"Computadores"}
               value={"293"}
-              desc={"8% desde el mes pasado"}
+              valueDesc={8}
             />
             <AssetStat
               icon={Monitor}
               iconSize={28}
               title={"Monitores"}
               value={"293"}
-              desc={"8% desde el mes pasado"}
+              valueDesc={8}
             />
             <AssetStat
               icon={Package}
               iconSize={28}
+              iconColor="text-secondary"
               title={"Software"}
               value={"800"}
-              desc={"15% desde el mes pasado"}
+              valueDesc={15}
             />
             <AssetStat
               icon={Network}
               iconSize={28}
+              iconColor="text-secondary"
               title={"Dispositivos de red"}
               value={"50"}
-              desc={"10% desde el mes pasado"}
+              valueDesc={0}
             />
             <AssetStat
               icon={Usb}
               iconSize={28}
+              iconColor="text-secondary"
               title={"Perifericos"}
               value={"158"}
-              desc={"25% desde el mes pasado"}
+              valueDesc={-5}
             />
-          </div>
+          </section>
+
+          {/* Estadisticas */}
+          <section className="flex justify-between">
+            <div className="flex shadow border-1 border-base-200 rounded-lg p-5">
+              <div className="flex items-center gap-3">
+                <ChartPie size={28} className="text-base-content" />
+                <h1 className="text-2xl font-bold text-base-content">
+                  Analisis de Activos
+                </h1>
+              </div>
+
+            </div>
+          </section>
         </div>
       </div>
     </div>
