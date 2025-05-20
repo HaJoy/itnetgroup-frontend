@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { getDevices } from "../api/assetService";
 import { AssetChart } from "../components/ui/AssetChart";
+import { RecentActivities } from "../components/ui/RecentActivities";
 
 export const Dashboard = () => {
   // State variables
@@ -109,7 +110,11 @@ export const Dashboard = () => {
               </section>
 
               {/* Estadisticas */}
-              <AssetChart />
+              <section className="flex flex-col lg:flex-row justify-between gap-3 md:h-[528px]">
+                <AssetChart />
+                <RecentActivities />
+              </section>
+              
             </>
           )}
         </div>

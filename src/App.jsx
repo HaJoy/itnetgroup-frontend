@@ -11,7 +11,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/test" element={<Test />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>
