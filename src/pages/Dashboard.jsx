@@ -8,27 +8,46 @@ import {
   Network,
   Package,
   Usb,
-  ChartPie,
-  Activity,
 } from "lucide-react";
+import { getDevices } from "../api/assetService";
+import { AssetChart } from "../components/ui/AssetChart";
 
 export const Dashboard = () => {
-  useEffect(() => {
-    document.title = "Dashboard | ITNetGROUP";
-  }, []);
-
+  // State variables
   const [currentView, setCurrentView] = useState("dashboard");
   const [isOpen, setIsOpen] = useState(false);
+  const [devices, setDevices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Cambiar el titulo de la pestaña y cargar la informacion
+  useEffect(() => {
+    document.title = "Dashboard | ITNetGROUP";
+
+    const fetchDevices = async () => {
+      try {
+        const data = await getDevices();
+        setDevices(data);
+      } catch (error) {
+        console.error("Error fetching devices:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchDevices();
+  }, []);
+
+  // Funcion para cambiar el estado del sidebar
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
       <div className="flex-1 w-full bg-white">
         <Navbar username="Admin" toggleSidebar={toggleSidebar} />
-        <div className="p-4">
+        <div className="p-4  h-[calc(100vh-4rem)] overflow-auto">
           <div className="my-3 mx-2">
             <h1 className="text-2xl font-bold text-base-content">Dashboard</h1>
             <p className="mt-2 text-base-content">
@@ -37,60 +56,62 @@ export const Dashboard = () => {
             </p>
           </div>
 
-          {/* Assets stats */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
-            <AssetStat
-              icon={Computer}
-              iconSize={28}
-              title={"Computadores"}
-              value={"293"}
-              valueDesc={8}
-            />
-            <AssetStat
-              icon={Monitor}
-              iconSize={28}
-              title={"Monitores"}
-              value={"293"}
-              valueDesc={8}
-            />
-            <AssetStat
-              icon={Package}
-              iconSize={28}
-              iconColor="text-secondary"
-              title={"Software"}
-              value={"800"}
-              valueDesc={15}
-            />
-            <AssetStat
-              icon={Network}
-              iconSize={28}
-              iconColor="text-secondary"
-              title={"Dispositivos de red"}
-              value={"50"}
-              valueDesc={0}
-            />
-            <AssetStat
-              icon={Usb}
-              iconSize={28}
-              iconColor="text-secondary"
-              title={"Perifericos"}
-              value={"158"}
-              valueDesc={-5}
-            />
-          </section>
-
-          {/* Estadisticas */}
-          <section className="flex justify-between">
-            <div className="flex shadow border-1 border-base-200 rounded-lg p-5">
-              <div className="flex items-center gap-3">
-                <ChartPie size={28} className="text-base-content" />
-                <h1 className="text-2xl font-bold text-base-content">
-                  Analisis de Activos
-                </h1>
-              </div>
-
+          {/* Pantalla de carga */}
+          {isLoading ? (
+            <div className="flex flex-col justify-center items-center h-96">
+              <span className="loading loading-infinity loading-xl text-base-content"></span>
+              <span className="ml-4 text-lg text-base-content">
+                Cargando datos...
+              </span>
             </div>
-          </section>
+          ) : (
+            <>
+              {/* Assets stats */}
+              <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
+                <AssetStat
+                  icon={Computer}
+                  iconSize={28}
+                  title={"Computadores"}
+                  value={"293"}
+                  valueDesc={8}
+                />
+                <AssetStat
+                  icon={Monitor}
+                  iconSize={28}
+                  title={"Monitores"}
+                  value={"293"}
+                  valueDesc={8}
+                />
+                <AssetStat
+                  icon={Package}
+                  iconSize={28}
+                  iconColor="text-secondary"
+                  title={"Software"}
+                  value={"800"}
+                  valueDesc={15}
+                />
+                <AssetStat
+                  icon={Network}
+                  iconSize={28}
+                  iconColor="text-secondary"
+                  title={"Dispositivos de red"}
+                  value={"50"}
+                  valueDesc={0}
+                />
+                <AssetStat
+                  icon={Usb}
+                  iconSize={28}
+                  iconColor="text-secondary"
+                  title={"Perifericos"}
+                  value={"158"}
+                  valueDesc={-5}
+                />
+              </section>
+
+              {/* Estadisticas */}
+              <AssetChart />
+            </>
+          )}
         </div>
       </div>
     </div>
