@@ -8,14 +8,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { getComputers, getMonitors, getPerfs } from "../../utils/assetsFuntions";
 
-const data = [
-  { name: "Computadores", value: 293 },
-  { name: "Monitores", value: 293 },
-  { name: "Software", value: 800 },
-  { name: "Red", value: 50 },
-  { name: "Perifericos", value: 158 },
-];
+
 
 const COLORS = ["#34d399", "#60a5fa", "#fbbf24", "#a78bfa", "#f87171"];
 
@@ -40,10 +35,16 @@ const ChartTabs = ({ tabs, activeTab, setActiveTab }) => (
   </div>
 );
 
-export const AssetChart = () => {
+export const AssetChart = ({ dataDevices }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [pieRadius, setPieRadius] = useState(90);
   const [labelMobile, setLabelMobile] = useState(false);
+
+  const data = [
+  { name: "Computadores", value: getComputers(dataDevices) },
+  { name: "Monitores", value: getMonitors(dataDevices) },
+  { name: "Perifericos", value: getPerfs(dataDevices) },
+];
 
   // Ajustar el tamaño del grafico segun el tamaño de la pantalla
   useEffect(() => {
