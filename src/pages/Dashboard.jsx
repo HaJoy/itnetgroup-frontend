@@ -2,16 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Navbar } from "../components/layout/Navbar";
 import { Sidebar } from "../components/layout/Sidebar";
 import { AssetStat } from "../components/ui/AssetStat";
-import {
-  Computer,
-  Monitor,
-  Network,
-  Package,
-  Usb,
-} from "lucide-react";
+import { Computer, Monitor, Package, Usb, User } from "lucide-react";
 import { getDevices } from "../api/assetService";
 import { AssetChart } from "../components/ui/AssetChart";
 import { RecentActivities } from "../components/ui/RecentActivities";
+import { getComputers, getMonitors, getNumUsers, getPerfs, getSoftware } from "../utils/assetsFuntions";
 
 export const Dashboard = () => {
   // State variables
@@ -71,16 +66,17 @@ export const Dashboard = () => {
               <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
                 <AssetStat
                   icon={Computer}
-                  iconSize={28}
                   title={"Computadores"}
-                  value={"293"}
-                  valueDesc={8}
+                  iconColor="text-primary"
+                  iconSize={20}
+                  value={`${getComputers(devices)}`}
+                  valueDesc={20}
                 />
                 <AssetStat
                   icon={Monitor}
                   iconSize={28}
                   title={"Monitores"}
-                  value={"293"}
+                  value={`${getMonitors(devices)}`}
                   valueDesc={8}
                 />
                 <AssetStat
@@ -88,15 +84,15 @@ export const Dashboard = () => {
                   iconSize={28}
                   iconColor="text-secondary"
                   title={"Software"}
-                  value={"800"}
+                  value={`${getSoftware(devices)}`}
                   valueDesc={15}
                 />
                 <AssetStat
-                  icon={Network}
+                  icon={User}
                   iconSize={28}
                   iconColor="text-secondary"
-                  title={"Dispositivos de red"}
-                  value={"50"}
+                  title={"Usuarios"}
+                  value={`${getNumUsers(devices)}`} // TODO: Cambiar esto para contar en una tabla usuarios en la db
                   valueDesc={0}
                 />
                 <AssetStat
@@ -104,7 +100,7 @@ export const Dashboard = () => {
                   iconSize={28}
                   iconColor="text-secondary"
                   title={"Perifericos"}
-                  value={"158"}
+                  value={`${getPerfs(devices)}`}
                   valueDesc={-5}
                 />
               </section>
@@ -114,7 +110,6 @@ export const Dashboard = () => {
                 <AssetChart />
                 <RecentActivities />
               </section>
-              
             </>
           )}
         </div>
