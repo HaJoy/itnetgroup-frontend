@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import { Dashboard } from "./pages/Dashboard";
 import { Error } from "./pages/Error";
-import { Test } from "./pages/Test";
 
 function App() {
   return (
