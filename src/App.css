@@ -12,3 +12,24 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
 }
+
+/* Muestra y personaliza la barra de desplazamiento en todos los navegadores modernos */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #e5e7eb; /* bg-base-200 o un gris claro */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a3a3a3; /* Un gris medio */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737373; /* Un gris más oscuro al pasar el mouse */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a3a3a3 #e5e7eb;
+}
