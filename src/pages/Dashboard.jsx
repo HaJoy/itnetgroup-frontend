@@ -42,7 +42,7 @@ export const Dashboard = () => {
     <div className="flex">
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
       <div className="flex-1 w-full bg-white">
-        <Navbar username="Admin" toggleSidebar={toggleSidebar} />
+        <Navbar toggleSidebar={toggleSidebar} />
         <div className="p-4  h-[calc(100vh-4rem)] overflow-auto">
           <div className="my-3 mx-2">
             <h1 className="text-2xl font-bold text-base-content">Dashboard</h1>
