@@ -2,8 +2,13 @@ import React from "react";
 import { KeyRound, User } from "lucide-react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { validateCredentials } from "../../api/userService";
+import { useUser } from "../../context/userCtx";
 
-export const LoginForm = () => {
+export const LoginForm = ({ onError }) => {
+
+  const { setUser } = useUser();
+
   // Esquema de validación con Yup
   const validationSchema = Yup.object({
     username: Yup.string().required("El usuario es obligatorio"),
@@ -11,8 +16,16 @@ export const LoginForm = () => {
   });
 
   // Funcion de inicio de sesion
-  const handleLogin = (values) => {
-    console.log("Logica de inicio de sesion", values);
+  const handleLogin = async (values) => {
+    try {
+      const response = await validateCredentials(values);
+      setUser(response.user); // Guarda la info del usuario globalmente
+      window.location.href = "/dashboard"; // Redirigir al dashboard
+
+    } catch (error) {
+      console.log('Error en el login:', error.response ? error.response.data.mensaje : error.message);
+      onError(); // Muestra el toast en el componente padre (la pagina en si)
+    }
   };
 
   return (
@@ -24,7 +37,7 @@ export const LoginForm = () => {
           onSubmit={handleLogin}
         >
           {({ isSubmitting }) => (
-            <Form>
+            <Form autoComplete="off">
               <fieldset className="fieldset text-base-content">
                 {/* User input */}
                 

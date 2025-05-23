@@ -1,7 +1,19 @@
 import { React, useState, useEffect } from "react";
 import { LoginForm } from "../components/ui/LoginForm";
+import { Toast } from "../components/ui/Toast";
 
 export const Login = () => {
+
+  const [showToast, setShowToast] = useState(false);
+
+  // Mostar el toast cuando el formulario devuelva error a este componente
+  const handleShowToast = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
   useEffect(() => {
     document.title = "Iniciar sesión | ITNetGROUP";
   }, []);
@@ -18,9 +30,10 @@ export const Login = () => {
             </p>
           </div>
 
-          <LoginForm />
+          <LoginForm onError={handleShowToast}/>
         </div>
       </div>
+      <Toast statusColor={'alert-error'} text={'Usuario o contraseña incorrectos'} isOpen={showToast} />
     </section>
   );
 };
