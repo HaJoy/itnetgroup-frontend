@@ -6,6 +6,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Error } from "./pages/Error";
 import { Login } from "./pages/Login";
 import { UserProvider } from "./context/userCtx";
+import { AssetsPage } from "./pages/AssetsPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/assets/:assetType" element={<AssetsPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
