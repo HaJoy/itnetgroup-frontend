@@ -64,19 +64,19 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
               icon={LayoutDashboardIcon}
               text="Dashboard"
               isOpen={isOpen}
-              to="/"
+              to="/dashboard"
             />
             <SidebarItem
               icon={BoxIcon}
               text="Activos"
               isOpen={isOpen}
-              to={"#"}
+              to={"#"} // Falta pagina para activos en general
             />
             <SidebarItem
               icon={Users}
               text="Usuarios"
               isOpen={isOpen}
-              to={"#"}
+              to={"#"} // Falta pagina para usuarios
             />
             <span
               className={
@@ -90,31 +90,31 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
               icon={Computer}
               text="Computadores"
               isOpen={isOpen}
-              to={"#"}
+              to={"/assets/computer"}
             />
             <SidebarItem
               icon={Monitor}
               text="Monitores"
               isOpen={isOpen}
-              to={"#"}
+              to={"/assets/monitor"}
             />
             <SidebarItem
               icon={Package}
               text="Software"
               isOpen={isOpen}
-              to={"#"}
+              to={"/assets/software"}
             />
             <SidebarItem
               icon={Network}
               text="Dispositivos de red"
               isOpen={isOpen}
-              to={"#"}
+              to={"/assets/network"}
             />
             <SidebarItem
               icon={Usb}
               text="Perifericos"
               isOpen={isOpen}
-              to={"#"}
+              to={"/assets/peripheral"}
             />
           </nav>
         </div>
